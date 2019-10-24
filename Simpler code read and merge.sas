@@ -59,13 +59,7 @@ set tax4;
 where apr=.;
 run;
 
-/*Get rid of remaining missing??? I don't know how to estimate them
-if there's not a singe APRTOT for a certain NBHD or street*/
-data tax5;
-set tax4;
-if apr=. then delete;
-run;
-/*now 107842 in data set*/
+
 
 
 
@@ -91,9 +85,8 @@ data aprcount;
 set taxmerge;
 where apr=.;
 run;
-/*562 missing apr now??*/
 
-/*There are some with missing PID - delete??*/
+/*There are some with missing PID*/
 data tax;
 set taxmerge;
 where pid ne '';
