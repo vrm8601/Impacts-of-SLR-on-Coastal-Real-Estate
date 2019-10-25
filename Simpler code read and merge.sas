@@ -134,18 +134,6 @@ quit;
 
 /* Right join preserves all of flood data and matches with tax*/
 proc sql;
-create table merge as
-select tax5.pid, apr, fld_zone, acres, partial_acreage
-from tax5 right join flood
-on tax5.pid eq flood.pid
-;
-quit;
-
-
-
-
-
-proc sql;
 create table merge1 as
 select tax.pid, apr,zipcode, fld_zone, acres, partial_acreage
 from tax right join flood
@@ -153,7 +141,7 @@ on tax.pid eq flood.pid
 ;
 quit;
 
-
+/*Save permanent dataset*/
 libname perm 'C:/Users/vrm8601/Desktop/SLR';
 data perm.allmerge;
 set merge1;
@@ -162,6 +150,8 @@ data perm.nozipmerge;
 set merge;
 run;
 
+
+/*Investigate remaining missing values*/
 data mis;
 set merge1;
 where pid='';
