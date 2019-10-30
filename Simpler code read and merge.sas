@@ -113,38 +113,18 @@ data flood;
 run;
 
 
-
-
-/*Select just variables we need*/
-data flood;
-	set flood;
-	keep pid fld_zone acres partial_acreage;
-run;
-
-
-
-/*Only matches - 37662*/
-proc sql;
-create table merge as
-select tax.pid, apr, fld_zone, acres, partial_acreage
-from tax join flood
-on tax.pid eq flood.pid
-;
-quit;
-
-
 /* Right join preserves all of flood data and matches with tax*/
 proc sql;
 create table merge1 as
-select tax.pid, apr,zipcode, fld_zone, acres, partial_acreage
+select tax.pid, apr,zipcode, fld_zone, acres, partial_acreage,ZONE_SUBTY
 from tax right join flood
 on tax.pid eq flood.pid
 ;
 quit;
 
 /*Save permanent dataset*/
-libname perm 'C:/Users/vrm8601/Desktop/SLR';
-data perm.allmerge;
+libname perm 'C:/Users/vrm8601/Desktop/SLR SAS Datasets';
+data perm.finalmerge;
 set merge1;
 run;
 data perm.nozipmerge;
