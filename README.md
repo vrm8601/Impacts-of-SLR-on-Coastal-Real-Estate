@@ -4,7 +4,7 @@
 
 Here’s a little background to explain the motivations for this project.
 
-Over the last 150 years, or since the dawn of the industrial age, the world temperature has been rising.  Not just rising at a standard rate of change, but at a rate relatively fast compared to historical measurements. The primary drivers of this temperature increase are greenhouse gases, like CO2 and methane.  These gases absorb and emit thermal radiation (heat) and have increased significantly over the last century as seen in the graphs.  Now bear with me guys, I’m about to get pretty technical.  S
+Over the last 150 years, or since the dawn of the industrial age, the world temperature has been rising.  Not just rising at a standard rate of change, but at a rate relatively fast compared to historical measurements. The primary drivers of this temperature increase are greenhouse gases, like CO2 and methane.  These gases absorb and emit thermal radiation (heat) and have increased significantly over the last century.
 
 So why is this relevant to our sea-level rise project?
 The world's seas have absorbed more than 90 percent of the heat trapped by these gases, and that’s had some consequences. Average sea levels have swelled over 8 inches (about 23 cm) since 1880, and for some perspective, that’s shortly after the civil war.   Now within that timeframe about three of those inches gained in the last 25 years (or in other words, the time since Forest Gump was released). Presently the rate of sea rise is 0.13 inches (3.2 mm) per year. The average annual rate of global sea level rise accelerated from 1993 - 2008, increasing 65 - 90 percent above the twentieth century average.
