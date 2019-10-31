@@ -166,19 +166,8 @@ run;
 proc delete data=temp;
 run;
 
-/*zipcode is a character variable - we need to make it numeric
-and save permanant data set for future reference */
+/*Now we need to create 8 dummy variables for the zipcodes since this is our categorical variable*/
 
-data perm.stacked;
-set stacked;
-zip=input(zipcode,8.);
-drop zipcode;
-rename zip=zipcode;
-run;
-
-proc reg data=stacked;
-model zhvi= zipcode date;
-run;
 
 
 
