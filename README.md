@@ -24,7 +24,7 @@ The main drivers of sea level rise are:
     * USGS
 2. Property Data
     * New Hanover County Tax Parcel DataBase
-    ftp://ftp.nhcgov.com/ohttps://www.zillow.com/research/data/utbound/gisdata/taxdata/nhclttax/
+    ftp://ftp.nhcgov.com/outbound/gisdata/taxdata/nhclttax/
     * Zillow Home Value Index Data
     https://www.zillow.com/research/data/
 3. Sea Level Projections
