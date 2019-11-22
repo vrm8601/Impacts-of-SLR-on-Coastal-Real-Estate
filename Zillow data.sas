@@ -188,7 +188,7 @@ set stacked;
 dayssince = intck('day', '01APR1996'd,date);
 run;
 
-data new;
+data zipd;
 set zipd;
 z28401=0;z28403=0;z28405=0;z28409=0;z28411=0;z28412=0;z28428=0;z28429=0;z28449=0;
 select (zipcode);
@@ -224,20 +224,19 @@ run;
 
 /******* Fitting a Model *******/
 ods graphics off;
-proc reg data=new;
+proc reg data=zipd;
 model zhvi= dayssince z28401 z28403 z28405 z28409 z28411 z28412 z28428 z28449 z28429 / noint;
 output out=predictions predicted=pred lcl=lower ucl=upper;
 run;
 
-
 ods graphics off;
-proc reg data=new plots=all;
+proc reg data=zipd plots=all;
 model zhvi= dayssince z28401 z28403 z28405 z28409 z28411 z28412 z28428 z28449 z28429;
 output out=predictions predicted=pred lcl=lower ucl=upper;
 run;
 
 ods graphics;
-proc glm data=new plots=diffplot;
+proc glm data=zipd plots=diffplot;
 model zhvi= date z28401 z28403 z28405 z28409 z28411 z28412 z28428 z28449 z28429; /* these options after the '/' are to show predicte values in results screen - you don't need it */
 output out=preddata predicted=pred lcl=lower ucl=upper ; /* this line creates a dataset with the predicted value for all observations */
 store reg;
@@ -245,47 +244,93 @@ run;
 quit;
 
 
-proc glm data=zipd;
+
+proc glm data=new; /*Very bad*/
 class zipcode;
-model zhvi=dayssince;
+model zhvi=dayssince/solution;
 run;
 
-
-proc glm data=new;
+proc glm data=new; /*best*/
 class zipcode;
 model zhvi=dayssince|zipcode/solution;
 run;
+
+proc glm data=new;/*not as good*/
+class zipcode;
+model zhvi=dayssince zipcode/solution;
+run;
+
+proc glmselect data=new;
+class zipcode;
+model zhvi=dayssince|zipcode / selection=stepwise;
+run;
+
+
+ods graphics off;
+proc reg data=zipd;
+model zhvi= dayssince z28401 z28403 z28405 z28409 z28411 z28412 z28428 z28449 z28429
+      / selection=adjrsq  aic sbc bic cp mse;
+  ods output SubsetSelSummary=riskModels;
+run;
+
+
+proc glmselect data=new;
+class zipcode;
+  model zhvi= dayssince|zipcode/ selection=stepwise(select=aic stop=sbc);
+run;
+	
+
+/*Don't think these make sense to do either*/
+proc genmod data=new plots=(predicted reschi);
+class zipcode;
+model zhvi=dayssince|zipcode/dist=geometric type3 ;
+run;
+
+proc genmod data=new plots=(predicted reschi);
+class zipcode;
+model zhvi=dayssince|zipcode/dist=negbin type3;
+run;
+
+proc genmod data=new plots=(predicted reschi);
+class zipcode;
+model zhvi=dayssince|zipcode/dist=normal type3;
+run;
+
+
+
+/*Logistic doesn't make sense, ZHVI is not binary or even nominal*/
+proc logistic data=new;
+class zipcode;
+model zhvi=dayssince zipcode;
+run;
+proc logistic data=new;
+class zipcode;
+model zhvi=dayssince|zipcode;
+run;
+proc logistic data=new;
+class zipcode;
+ model zhvi=dayssince zipcode/ link=alogit;
+run;
+ods graphics off;
+proc logistic data=new;
+class zipcode;
+ model zhvi=dayssince zipcode/ link=alogit;
+  /**generalized logit is used for nominal responses
+    (also known as baseline logit)**/
+run;
+
+
 
 
 /*I think this is the best I've got so far but not sure if we should be using linear regression 
 and we may need to dummy encode zipcode since it's nominal*/
 proc glm data=new;
 class zipcode;
-model zhvi=dayssince|zipcode/solution;
+model zhvi=dayssince zipcode/solution;
 lsmeans zipcode / diff adjust=tukey;
+  ods output ParameterEstimates=pest;
 run;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*Maybe leave out the interaction - ask Blum*/
 
 
 
@@ -312,5 +357,37 @@ run;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Call in data set for new sessions*/
+libname perm 'C:/Users/vrm8601/Desktop/SLR SAS Datasets';
+data new;
+set perm.zipreg;
+run;
+
+proc glm data=new;
+class zipcode;
+model zhvi=dayssince zipcode/solution;
+lsmeans zipcode / diff adjust=tukey;
+  ods output ParameterEstimates=pest;
+run;
 
 
