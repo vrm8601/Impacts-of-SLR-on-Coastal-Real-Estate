@@ -32,13 +32,11 @@ The main drivers of sea level rise are:
 
 
 ## Objectives:
+This project aims to investigate the monetary impact of sea level rise on coast real estate in New Hanover County by pursuing the following objectives:
+1. Identify and quantify the monetary value of real estate within New Hanover County that will experience increased flood risks as sea level rises
+2. Find the potential loss in monetary value of these properties for different increments of sea level change
+3. Calculate the difference in property value predictions with and without sea level rise.
 
-- Identify and quantify real estate within New Hanover County that will experience increased flood risks as sea level rises
-- What is the potential loss in monetary value of properties within flood zones by zip-code
+All results will be grouped by zip code and then displayed on an interactive map in which any zip code in New Hanover County can be clicked on and the number of homes affected and the total value at risk will be shown.
 
-    -For different increments of  sea level change
-    
-    -Over certain periods of time
-- What is the difference in property value predictions without sea level rise vs. with the predicted sea level rise
-- Create an interactive map displaying our results
 
