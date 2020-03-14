@@ -24,7 +24,7 @@ Due to increasing concentrations of carbon dioxide and methane gases in the atmo
    * USGS predictions
    
 
-## Objectives:
+## Objectives
 This project aims to investigate the monetary impact of sea level rise on coast real estate in New Hanover County by pursuing the following objectives:
 1. Identify and quantify the monetary value of real estate within New Hanover County that will experience increased flood risks as sea level rises
 2. Find the potential loss in monetary value of these properties for different increments of sea level change
