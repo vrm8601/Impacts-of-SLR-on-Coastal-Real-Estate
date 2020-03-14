@@ -22,7 +22,7 @@ Due to increasing concentrations of carbon dioxide and methane gases in the atmo
     https://coast.noaa.gov/slrdata/
 3. Results Comparison
    * USGS predictions
-   
+Cleaned versions of the data used can be found in the Data folder in this repository for easy recall when using the code. 
 
 ## Objectives
 This project aims to investigate the monetary impact of sea level rise on coast real estate in New Hanover County by pursuing the following objectives:
