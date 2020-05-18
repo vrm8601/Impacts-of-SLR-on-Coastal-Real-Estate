@@ -14,15 +14,20 @@ Due to increasing concentrations of carbon dioxide and methane gases in the atmo
 1. Property Data
     * New Hanover County Tax Parcel DataBase
     ftp://ftp.nhcgov.com/outbound/gisdata/taxdata/nhclttax/
+    *** Tax_parcel_data.txt (original NHC tax parcel dataset)
+    *** all_parcels_with_zipcodes.csv (same as above but includes zipcodes for each parcel)
     * Zillow Home Value Index Data
     https://www.zillow.com/research/data/
+    *** Zip_Zhvi_AllHomes.csv
 2. Sea Level Projections
     * IPCC
     * NOAA 
     https://coast.noaa.gov/slrdata/
+    *** SAS_GIS_Data.zip
 3. Results Comparison
    * USGS predictions
-Cleaned versions of the data used can be found in the "perm library" folder in this repository for easy recall when using the code. 
+   *** actual.sas7bdat
+These datasets can be found in the "Original Data" folder. Cleaned versions of the data used can be found in the "perm library" folder in this repository for easy recall when using the code. 
 
 ## Objectives
 This project aims to investigate the monetary impact of sea level rise on coast real estate in New Hanover County by pursuing the following objectives:
